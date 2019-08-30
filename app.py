@@ -16,6 +16,8 @@ def home():
 
 '''
 get all series
+TODO
+filter by category
 '''
 @app.route('/series', methods=['GET'])
 def get_series():
@@ -24,6 +26,8 @@ def get_series():
 
 '''
 get series_id series information
+TODO
+read from service
 '''
 @app.route('/series/<series_id>', methods=['GET'])
 def get_one_series(series_id):
@@ -35,6 +39,8 @@ def get_one_series(series_id):
 '''
 save episode as watched
 body: userId
+TODO
+connection to db
 '''
 @app.route('/series/<series_id>/episode/<episode_id>', methods=['POST'])
 def save_watched_episode(series_id, episode_id):
@@ -47,6 +53,8 @@ def save_watched_episode(series_id, episode_id):
 '''
 delete episode as watched
 body: userId
+TODO
+connection to db
 '''
 @app.route('/series/<series_id>/episode/<episode_id>', methods=['DELETE'])
 def save_unwatched_episode(series_id, episode_id):
