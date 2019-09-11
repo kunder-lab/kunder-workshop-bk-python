@@ -1,6 +1,7 @@
 from flask import Flask
 from flask import request
 import requests
+import os
 
 
 app = Flask(__name__)
@@ -62,3 +63,7 @@ def save_unwatched_episode(series_id, episode_id):
     return { 'msg': 'Serie' }
   else:
     return { 'msg': 'Serie: ' + series_id + ' episode: ' + episode_id}
+
+if __name__ == '__main__':
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port)
