@@ -1,9 +1,19 @@
 from flask import Flask
 from flask import request
+from flaskext.mysql import MySQL
 import requests
+import os
 
 
 app = Flask(__name__)
+mysql = MySQL()
+
+app.config['MYSQL_DATABASE_USER'] = os.environ['MYSQL_DATABASE_USER']
+app.config['MYSQL_DATABASE_PASSWORD'] = os.environ['MYSQL_DATABASE_PASSWORD']
+app.config['MYSQL_DATABASE_DB'] = os.environ['MYSQL_DATABASE_DB']
+app.config['MYSQL_DATABASE_HOST'] = os.environ['MYSQL_DATABASE_HOST']
+mysql.init_app(app)
+
 
 base_url = 'http://demo7835208.mockable.io/'
 
@@ -12,6 +22,13 @@ Status
 '''
 @app.route('/', methods=['GET'])
 def home():
+  ''' example connection 
+  conn = mysql.connect()
+  try:
+    cursor = conn.cursor()
+  finally:
+    conn.close()
+  '''
   return { 'msg': 'API OK' }
 
 '''
